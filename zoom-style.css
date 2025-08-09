@@ -1,0 +1,627 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.zoom-container {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  padding-bottom: 12px;
+}
+
+/* Button styles */
+.button-container {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 20px;
+}
+
+.next-button {
+  background-color: #2d8cff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+  /* Makes button full width */
+  max-width: 500px;
+  /* Optional: limits button width */
+}
+
+.next-button:hover {
+  background-color: #1a7ae6;
+}
+
+/* Banner section */
+.banner-section {
+  flex: 1;
+  background-color: #2d8cff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.zoom-logo img {
+  width: 120px;
+  margin-bottom: 40px;
+}
+
+.zoom-banner img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  /* keeps it from getting too huge on wide screens */
+}
+
+@media (max-width: 768px) {
+  .zoom-banner img {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .zoom-banner img {
+    max-width: 70%;
+  }
+}
+
+
+/* Sign in section */
+.signin-container {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+/* Input styles */
+.input-container {
+  margin-bottom: 30px;
+}
+
+.floating-label-input {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-label-input input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.floating-label-input input:focus {
+  outline: none;
+  border-color: #2d8cff;
+  box-shadow: 0 0 0 2px rgba(45, 140, 255, 0.2);
+}
+
+.floating-label-input label {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  color: #999;
+  background: white;
+  padding: 0 4px;
+  transition: all 0.2s;
+  pointer-events: none;
+}
+
+.floating-label-input input:focus+label,
+.floating-label-input input:not(:placeholder-shown)+label {
+  top: -8px;
+  font-size: 12px;
+  color: #2d8cff;
+}
+
+.error-message {
+  color: #ff3e3e;
+  font-size: 14px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+.forgot-email {
+  color: #2d8cff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-email:hover {
+  text-decoration: underline;
+}
+
+/* Button styles */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.create-account {
+  color: #2d8cff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.create-account:hover {
+  text-decoration: underline;
+}
+
+.next-button {
+  background-color: #2d8cff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.next-button:hover {
+  background-color: #1a7ae6;
+}
+
+/* Footer styles */
+/* footer {
+  margin-top: auto;
+  padding-top: 30px;
+  padding-bottom: 10%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+}
+
+.footer-link {
+  color: #0956b5;
+  text-decoration: none;
+  font-size: 15px;
+
+
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.small-T {
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.5;
+  margin: 20px auto 0;
+  padding: 0 10px;
+  max-width: 400px; */
+/* keeps lines readable */
+/* } */
+
+/* .small-T a {
+  color: #2d8cff;
+  text-decoration: none;
+}
+
+.small-T a:hover {
+  text-decoration: underline;
+} */
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .small-T {
+    font-size: 14px;
+    /* slightly bigger for readability */
+    max-width: 600px;
+    /* allow more width on large monitors */
+  }
+}
+
+
+.small-T a:hover {
+  text-decoration: underline;
+  /* underline on hover for accessibility */
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+
+.login-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    /* stack vertically */
+  }
+
+  .banner img {
+    max-width: 80%;
+  }
+
+  .login-section {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .logo {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner img {
+    max-width: 70%;
+  }
+
+  .logo {
+    width: 60px;
+  }
+}
+
+/* Hide the banner's logo on small screens */
+@media (max-width: 768px) {
+  .banner .logo {
+    display: none;
+  }
+}
+
+/* Hide the top-left logo on desktop, only show in mobile */
+@media (min-width: 769px) {
+  .top-left-logo {
+    display: none;
+  }
+}
+
+
+/* Main layout */
+.zoom-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Banner section */
+.banner-section {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+.zoom-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.zoom-logo img {
+  width: 100px;
+  height: auto;
+}
+
+.zoom-banner img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Sign-in container */
+.signin-container {
+  flex: 1;
+  max-width: 400px;
+  padding: 40px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Move sign-in container slightly up on small screens */
+@media (max-width: 480px) {
+  .signin-container {
+    margin-top: -40px;
+    /* adjust this value as needed */
+  }
+}
+
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #131619;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.floating-label-input {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.floating-label-input input {
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.floating-label-input label {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  color: #777;
+  font-size: 14px;
+  transition: 0.2s ease;
+  pointer-events: none;
+}
+
+.floating-label-input input:focus {
+  border-color: #2d8cff;
+}
+
+.floating-label-input input:focus+label,
+.floating-label-input input:not(:placeholder-shown)+label {
+  top: -8px;
+  left: 8px;
+  background: white;
+  padding: 0 5px;
+  font-size: 12px;
+  color: #2d8cff;
+}
+
+.error-message {
+  font-size: 12px;
+  color: red;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  display: none;
+}
+
+.forgot-email {
+  font-size: 13px;
+  color: #2d8cff;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-account {
+  font-size: 13px;
+  color: #2d8cff;
+}
+
+.next-button {
+  background-color: #0E72ED;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  /* Centering magic starts here */
+  align-items: center;
+  /* Vertical center */
+  justify-content: center;
+  /* Horizontal center */
+}
+
+
+.next-button:hover {
+  background-color: #1f73d8;
+}
+
+footer {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.footer-link {
+  font-size: 15px;
+  color: #0956b5;
+  margin: 0 8px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .zoom-container {
+    flex-direction: column;
+  }
+
+  .zoom-logo img {
+    width: 80px;
+  }
+
+  .zoom-banner img {
+    max-width: 85%;
+    padding-left: 50px;
+  }
+
+  .banner-section {
+    padding: 20px;
+  }
+
+  .signin-container {
+    box-shadow: none;
+    max-width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .logo.mobile-only {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .logo.mobile-only {
+    display: none;
+  }
+}
+
+
+/*  */
+.banner-header {
+  display: flex;
+  justify-content: space-between;
+  /* logo left, links right */
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.banner-links a {
+  margin-left: 20px;
+  font-size: 14px;
+  color: #2d8cff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.banner-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive: stack logo and links on mobile */
+@media (max-width: 768px) {
+  .banner-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .banner-links {
+    margin-top: 10px;
+  }
+}
+
+
+.custom-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.custom-alert {
+  background: white;
+  padding: 20px;
+  width: 350px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.custom-alert h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.custom-alert p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.custom-alert-btn {
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-alert-btn:hover {
+  background: #0056b3;
+}
+

